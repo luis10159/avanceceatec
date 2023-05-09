@@ -1,0 +1,10 @@
+
+<template>
+  <nav>
+    <router-link :to="{ name: 'home' }">Inicio</router-link> |
+    <router-link :to="{ name: 'login' }">Login</router-link> |
+    <router-link :to="{ name: 'dashboard' }">Dashboard</router-link> |
+  </nav>
+  <router-view />
+</template>
+

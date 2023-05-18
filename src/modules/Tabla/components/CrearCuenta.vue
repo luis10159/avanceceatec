@@ -43,8 +43,8 @@
                     <a-col :span="12">
                         <a-form-item label="Tipo de cuenta" name="tipoCuenta">
                             <a-select v-model:value="form.tipoCuenta" placeholder="Please choose the tipoCuenta">
-                                <a-select-option value="private">Activo</a-select-option>
-                                <a-select-option value="public">Pasivo</a-select-option>
+                                <a-select-option value="activo">Activo</a-select-option>
+                                <a-select-option value="pasivo">Pasivo</a-select-option>
                             </a-select>
                         </a-form-item>
                     </a-col>
@@ -53,8 +53,8 @@
                     <a-col :span="12" v-if="form.nivelCuenta == 'registro'">
                         <a-form-item label="Tipo de análisis" name="tipoAnalisis">
                             <a-select v-model:value="form.tipoAnalisis" placeholder="Please a-s an tipoAnalisis">
-                                <a-select-option value="xiao">Sin análisis</a-select-option>
-                                <a-select-option value="mao">Por documentos</a-select-option>
+                                <a-select-option value="sinanalisis">Sin análisis</a-select-option>
+                                <a-select-option value="documentos">Por documentos</a-select-option>
                             </a-select>
                         </a-form-item>
                     </a-col>
@@ -70,41 +70,47 @@
                 <a-row class="row-btn" v-if="form.nivelCuenta == 'registro' || form.nivelCuenta == 'subCuenta'">
                     <a-col :span="20">
                         <a-col :span="24" class="row-btn"
-                            v-if="sum != 100 || (porcentajes[0] || porcentajes[1] || porcentajes[2] || porcentajes[3]) != 0">
-                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" /> <a-input-number id="inputNumber"
-                                v-on:change="suma" v-model:value="porcentajes[0]" :min="0" :max="100"
-                                :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
+                            v-if="sum != 100 || (form.porcentajes[0] || form.porcentajes[1] || form.porcentajes[2] || form.porcentajes[3]) != 0">
+                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" v-model:value="form.debe[0]" />
+                            <a-input-number id="inputNumber" v-on:change="suma" v-model:value="form.porcentajes[0]" :min="0"
+                                :max="100" :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
 
                         </a-col>
 
                         <a-col class="row-btn" :span="24"
-                            v-if="(porcentajes[0] != 0 && (sum != 100 && sum < 100)) || (porcentajes[1] || porcentajes[2] || porcentajes[3]) != 0">
-                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" /> <a-input-number id="inputNumber"
-                                v-on:change="suma" v-model:value="porcentajes[1]" :min="0" :max="100"
-                                :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
+                            v-if="(form.porcentajes[0] != 0 && (sum != 100 && sum < 100)) || (form.porcentajes[1] || form.porcentajes[2] || form.porcentajes[3]) != 0">
+                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" v-model:value="form.debe[1]" />
+                            <a-input-number id="inputNumber" v-on:change="suma" v-model:value="form.porcentajes[1]" :min="0"
+                                :max="100" :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
                         </a-col>
 
                         <a-col class="row-btn" :span="24"
-                            v-if="(porcentajes[1] != 0 && (sum != 100 && sum < 100)) || (porcentajes[2] || porcentajes[3] != 0)">
-                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" /> <a-input-number id="inputNumber"
-                                v-on:change="suma" v-model:value="porcentajes[2]" :min="0" :max="100"
-                                :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
+                            v-if="(form.porcentajes[1] != 0 && (sum != 100 && sum < 100)) || (form.porcentajes[2] || form.porcentajes[3] != 0)">
+                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" v-model:value="form.debe[2]" />
+                            <a-input-number id="inputNumber" v-on:change="suma" v-model:value="form.porcentajes[2]" :min="0"
+                                :max="100" :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
 
                         </a-col>
                         <a-col class="row-btn" :span="24"
-                            v-if="(porcentajes[2] != 0 && (sum != 100 && sum < 100)) || (porcentajes[3] != 0)">
-                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" /> <a-input-number id="inputNumber"
-                                v-on:change="suma" v-model:value="porcentajes[3]" :min="0" :max="100"
-                                :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
+                            v-if="(form.porcentajes[2] != 0 && (sum != 100 && sum < 100)) || (form.porcentajes[3] != 0)">
+                            Cta. (Debe): <a-input-number id="inputNumber" :min="1" v-model:value="form.debe[3]" />
+                            <a-input-number id="inputNumber" v-on:change="suma" v-model:value="form.porcentajes[3]" :min="0"
+                                :max="100" :formatter="value => `${value}%`" :parser="value => value.replace('%', '')" />
                         </a-col>
                     </a-col>
                     <a-col :span="4">
-                        Cta. (Haber): <a-input-number class="row-btn" id="inputNumber" :min="1" />
-                        Cta. (Cierre): <a-input-number class="row-btn" id="inputNumber" :min="1" />
+                        Cta. (Haber): <a-input-number class="row-btn" id="inputNumber" :min="1"
+                            v-model:value="form.haber" />
+                        Cta. (Cierre): <a-input-number class="row-btn" id="inputNumber" :min="1"
+                            v-model:value="form.cierre" />
                         <a-form-item label="Auxiliar" name="auxiliar">
                             <a-input v-model:value="form.auxiliar" placeholder="Por favor, ingrese..." />
                         </a-form-item>
                     </a-col>
+                    <a-button type="primary" @click="mostrarObjeto" class="btn-margin">
+                        
+                     datos
+                    </a-button>
                 </a-row>
             </a-form>
             <a-row v-if="sum > 100" :span="24">
@@ -140,7 +146,11 @@ const form = reactive({
     tipoCuenta: '',
     nivelCuenta: '',
     opciones: [],
+    porcentajes: [0, 0, 0, 0],
     auxiliar: '',
+    haber: undefined,
+    cierre: undefined,
+    debe: [0, 0, 0, 0],
 });
 // detalle de los campos
 const rules = {
@@ -172,6 +182,11 @@ const rules = {
     auxiliar: [{
         message: 'Ingresa el auxiliar',
     }],
+    porcentajes: [{
+        message: 'Selecione las opciones que necesite',
+        type: 'array',
+    }]
+
 };
 
 const visible = ref(false);
@@ -196,15 +211,19 @@ for (let i = 1; i < 5; i++) {
 
 //procentajes
 
-const porcentajes = reactive([0, 0, 0, 0]);
+
 let sum = ref(0);
 let suma = () => {
     sum.value = 0;
     for (let i = 0; i < 4; i++) {
-        sum.value = sum.value + porcentajes[i];
+        sum.value = sum.value + form.porcentajes[i];
     }
 }
 
+// mostrar objeto
+const mostrarObjeto = () => {
+    console.log(form);
+}
 
 </script>
 
@@ -226,11 +245,12 @@ let suma = () => {
 .ancho-complet {
     width: 100%;
 }
+
 .hola {
     text-align: end;
 }
+
 .flex {
     display: flex;
     justify-content: space-between;
-}
-</style>
+}</style>

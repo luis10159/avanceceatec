@@ -15,6 +15,12 @@
 
         <a-modal v-model:open="open" title="Asignar Empresa" @ok="handleOk" width="720px" ok-text="Aceptar"
             cancel-text="Cancelar">
+            <a-form-item label="Usuario" class="margen-user">
+                <a-select  placeholder="Selecciona el usuario">
+                    <a-select-option value="usera">usuario A</a-select-option>
+                    <a-select-option value="userb">Usuario B</a-select-option>
+                </a-select>
+            </a-form-item>
             <a-row class="margen-title">
                 <a-col :span="13">
                     <a-typography-text strong>Empresas disponibles</a-typography-text>
@@ -295,11 +301,15 @@ const handleSearchModel = (dir, value) => {
     margin-top: 25px;
     margin-bottom: 15px;
 }
+.margen-user {
+    margin-top: 25px;
+}
 
 .border {
     border-top: 2px solid rgba(5, 63, 117, 0.308);
     padding-top: 10px;
 }
+
 .flex {
     display: flex;
     justify-content: space-between;

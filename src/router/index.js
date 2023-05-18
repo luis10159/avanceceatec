@@ -4,6 +4,9 @@ import Tabla from "@/modules/Tabla/router/index.js";
 import Login from "@/modules/Login/router/index.js";
 import MainLayout from "@/layouts/DashboardLayout.vue";
 import Empresa from "@/modules/Empresa/router/index.js";
+import Herramientas from "@/modules/Herramientas/router/index.js";
+import Reportes from "@/modules/Reportes/router/index.js";
+
 // import ModuloB from '../modules/TablaGeneral/router/index.js'
 
 const routes = [
@@ -17,6 +20,7 @@ const routes = [
       {
         ...Tabla
       },
+      
     ],
   },
   {
@@ -24,6 +28,18 @@ const routes = [
     component: MainLayout,
 
     ...Empresa
+  },
+  {
+    path: "/secundario",
+    component: MainLayout,
+
+    ...Herramientas
+  },
+  {
+    path: "/terciario",
+    component: MainLayout,
+
+    ...Reportes
   },
   {
     path: "/",

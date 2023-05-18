@@ -11,6 +11,7 @@
       <a-switch checked-children="Oscuro" un-checked-children="Claro" class="color" />
       <!-- Menú de opciones del usuario -->
       <a-dropdown-button class="space">
+        Hector Luis
         <template #overlay>
           <a-menu @click="handleMenuClick" theme="dark">
             <a-menu-item key="1">
@@ -43,7 +44,7 @@ import {
 
 } from "@ant-design/icons-vue";
 import { ref } from "vue";
-const value = ref('');
+const value = ref(null);
 //select
 const options = ref([{
   value: 'empresaa',
@@ -89,7 +90,7 @@ const handleMenuClick = e => {
 }
 
 .space {
-  margin-right: 20px;
+  margin: 0 20px;
 }
 
 .avatar {

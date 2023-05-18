@@ -1,11 +1,20 @@
-import MainLayout from '@/modules/Tabla/layouts/MainLayout.vue'
 export default {
-    component: MainLayout,
-    children: [
-      {
-        path: '/plan-contable',
-        name: 'plan-contable',
-        component: () => import(/* webpackChunkName: "plan-contable" */ '@/modules/Tabla/views/ContadorView.vue')
-      }
-    ],
+  children: [
+    {
+      path: "/registro-compras",
+      name: "registro-compras",
+      component: () =>
+        import(
+          /* webpackChunkName: "registro-compras" */ "@/modules/Reportes/views/RegistroComprasView.vue"
+        ),
+    },
+    {
+      path: "/datos-principales",
+      name: "datos-principales",
+      component: () =>
+        import(
+          /* webpackChunkName: "datos-principales" */ "@/modules/Reportes/views/DatosPrincipalesView.vue"
+        ),
+    },
+  ],
 }

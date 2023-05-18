@@ -1,6 +1,6 @@
 <template>
   <a-layout-sider v-model:collapsed="collapsed" collapsible>
-    <h2 class="logo"><a-typography-text strong>Ceatec Soft</a-typography-text></h2>
+    <h2 class="logo"><a-typography-text strong>Logo</a-typography-text></h2>
     <a-menu v-model:selectedKeys="selectedKeys" mode="inline" theme="dark">
       <a-sub-menu key="sub1">
         <template #title>
@@ -38,7 +38,8 @@
         <a-menu-item key="20"><check-square-outlined /> Diario simplificado</a-menu-item>
         <a-menu-item key="21"><check-square-outlined /> Libro mayor</a-menu-item>
         <a-menu-item key="22"><check-square-outlined /> Libro Caja y Bancos</a-menu-item>
-        <a-menu-item key="23"><check-square-outlined /> Registro de compras</a-menu-item>
+        <a-menu-item key="23"><check-square-outlined /> <router-link :to="{ name: 'registro-compras' }"> Registro de compras</router-link></a-menu-item>
+        <a-menu-item key="23"><check-square-outlined /> <router-link :to="{ name: 'datos-principales' }"> opciones</router-link></a-menu-item>
         <a-menu-item key="24"><check-square-outlined /> Registro de ventas</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub4">
@@ -48,7 +49,7 @@
             <span strong>Herramientas</span>
           </span>
         </template>
-        <a-menu-item key="30"><check-square-outlined /> Parametros</a-menu-item>
+        <a-menu-item key="30"><check-square-outlined /> <router-link :to="{ name: 'parametros' }"> Parametros</router-link></a-menu-item>
         <a-menu-item key="31"><check-square-outlined /> Abrir mes proceso</a-menu-item>
         <a-menu-item key="32"><check-square-outlined /> Cerrar mes proceso</a-menu-item>
         <a-menu-item key="33"><check-square-outlined /> Reabrir mes proceso</a-menu-item>
@@ -62,8 +63,6 @@
         </template>
         <a-menu-item key="40">Inicializar el sistema</a-menu-item>
         <a-menu-item key="41"><check-square-outlined /> <router-link :to="{ name: 'crear-empresa' }"> Crear
-            empresa</router-link></a-menu-item>
-        <a-menu-item key="42"><check-square-outlined /><router-link :to="{ name: 'asignar-empresa' }"> Asignar
             empresa</router-link></a-menu-item>
         <a-menu-item key="43"><check-square-outlined /> <router-link :to="{ name: 'crear-zona' }"> Crear
             zona</router-link></a-menu-item>

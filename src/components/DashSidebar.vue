@@ -39,8 +39,8 @@
         <a-menu-item key="21"><check-square-outlined /> Libro mayor</a-menu-item>
         <a-menu-item key="22"><check-square-outlined /> Libro Caja y Bancos</a-menu-item>
         <a-menu-item key="23"><check-square-outlined /> <router-link :to="{ name: 'registro-compras' }"> Registro de compras</router-link></a-menu-item>
-        <a-menu-item key="23"><check-square-outlined /> <router-link :to="{ name: 'datos-principales' }"> opciones</router-link></a-menu-item>
-        <a-menu-item key="24"><check-square-outlined /> Registro de ventas</a-menu-item>
+        <a-menu-item key="24"><check-square-outlined /> <router-link :to="{ name: 'datos-principales' }"> opciones</router-link></a-menu-item>
+        <a-menu-item key="25"><check-square-outlined /> Registro de ventas</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub4">
         <template #title>

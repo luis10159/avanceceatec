@@ -1,4 +1,5 @@
 <template>
+    
     <article>
         <a-layout class="layout">
             <dashsidebar></dashsidebar>
@@ -10,14 +11,16 @@
                         <a-breadcrumb-item>tabla</a-breadcrumb-item>
                     </a-breadcrumb>
                     <div :style="{ padding: '24px', minHeight: '360px', borderRadius: '15px' }">
-
-                        <router-view></router-view>
+                        <Suspense>
+                            <router-view />
+                        </Suspense>
                     </div>
                 </a-layout-content>
                 <dashfooter></dashfooter>
             </a-layout>
         </a-layout>
     </article>
+
 </template>
   
 <script setup>

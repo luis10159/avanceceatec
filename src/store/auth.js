@@ -13,8 +13,8 @@ const useAuth = defineStore("auth", {
       const rawResponse = await fetch(uri, {
         method: "GET",
         headers: {
-          "Content-Type": "Application/json",
-          Accept: "Application/json",
+          'Content-Type': 'Application/json',
+          'Accept': 'Application/json',
         },
       });
       const response = await rawResponse.json();
@@ -26,8 +26,8 @@ const useAuth = defineStore("auth", {
       const rawResponse = await fetch(uri, {
         method: "POST",
         headers: {
-          "Content-Type": "Application/json",
-          Accept: "Application/json",
+          'Content-Type': 'Application/json',
+          'Accept': 'Application/json',
         },
         body: JSON.stringify({
           name: name,
@@ -49,8 +49,8 @@ const useAuth = defineStore("auth", {
     const rawResponse = await fetch(uri,{
     method: 'POST',
     headers: {
-    "Content-Type": "Application/json",
-         ' Accept': "Application/json",
+    'Content-Type': 'Application/json',
+          'Accept': 'Application/json',
     },
     body: JSON.stringify({
     'email': email,
@@ -65,8 +65,8 @@ const useAuth = defineStore("auth", {
       const rawResponse = await fetch(uri, {
         method: "GET",
         headers: {
-          "Content-Type": "Application/json",
-          'Accept': "Application/json",
+          'Content-Type': 'Application/json',
+          'Accept': 'Application/json',
           'Authorization': `Bearer ${this.token}`,
         },
       });
@@ -78,8 +78,8 @@ const useAuth = defineStore("auth", {
     const rawResponse = await fetch(uri, {
     method: 'POST',
     headers: {
-    "Content-Type": "Application/json",
-          'Accept': "Application/json",
+    'Content-Type': 'Application/json',
+          'Accept': 'Application/json',
           'Authorization': `Bearer ${this.token}`,
     },
     body: JSON.stringify({
